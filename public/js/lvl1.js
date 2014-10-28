@@ -8,9 +8,8 @@
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('lvl1');
     map.addTilesetImage('SuperMarioBros-World1-1');
-
     layer = map.createLayer('World1');
-    layer.resizeWorld();
+
 
 
     //reset score and time
