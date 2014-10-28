@@ -18,6 +18,11 @@
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
 
+    map.setCollisionBetween(15, 16);
+    map.setCollisionBetween(20, 25);
+    map.setCollisionBetween(27, 29);
+    map.setCollision(40);
+
     //  Player physics properties. Give the little guy a slight bounce.
     player.body.bounce.y = 0.2;
     player.body.gravity.y = 300;
@@ -30,6 +35,7 @@
 
     //create the game world
     //timers
+
   };
 
   function update(){
@@ -39,6 +45,8 @@
 
     cursors = game.input.keyboard.createCursorKeys();
     player.body.velocity.x = 0;
+
+    game.physics.arcade.collide(player, layer);
 
     if (cursors.left.isDown)
     {
@@ -63,9 +71,9 @@
     }
 
     //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down)
+    if (cursors.up.isDown && player.body.onFloor())
     {
-        player.body.velocity.y = -350;
+        player.body.velocity.y = -200;
     }
   };
 
