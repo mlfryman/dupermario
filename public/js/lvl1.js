@@ -70,9 +70,9 @@
     }
 
     //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down)
+    if (cursors.up.isDown && player.body.onFloor())
     {
-        player.body.velocity.y = -350;
+        player.body.velocity.y = -200;
     }
   };
 })();
