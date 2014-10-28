@@ -2,8 +2,17 @@
   game.state.add('lvl1', {create:create, update:update});
 
   //variables are declared here
-
+  var map;
   function create(){
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    map = game.add.tilemap('lvl1');
+    map.addTilesetImage('SuperMarioBros-World1-1');
+
+    layer = map.createLayer('World1');
+    layer.resizeWorld();
+
+
     //reset score and time
 
     //create the game world
