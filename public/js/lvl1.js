@@ -31,6 +31,7 @@
     //create the game world
     //timers
   };
+
   function update(){
     //physics collisions declared here
     //input controls
@@ -67,4 +68,5 @@
         player.body.velocity.y = -350;
     }
   };
+
 })();
