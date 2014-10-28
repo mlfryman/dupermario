@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="19" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="super_mario" tilewidth="16" tileheight="16">
+  <image source="super_mario.png" width="176" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="75" height="19">
+  <data encoding="base64" compression="zlib">
+   eJzt0LEJADAMBDF7Au+/bVb4FAEHVKg/rquqAQCAtWZBww/Gq6tPXuWfvMo/eZV/8ir/5FX+CV455V8Pvg==
+  </data>
+ </layer>
+</map>
