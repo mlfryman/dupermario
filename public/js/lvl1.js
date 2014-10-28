@@ -35,13 +35,15 @@
 
     //create the game world
     //timers
-
+    layer.fixedToCamera = false
   };
 
   function update(){
     //physics collisions declared here
     //input controls
      //  Reset the players velocity (movement)
+
+    this.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
 
     cursors = game.input.keyboard.createCursorKeys();
     player.body.velocity.x = 0;
