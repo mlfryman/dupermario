@@ -4,6 +4,10 @@
   function preload(){
     //load ALL game assets here
     game.load.image('bg', '/assets/background.png');
+    game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+
+    game.load.tilemap('lvl1', '/assets/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('lvl1Tiles', '/assets/super_mario.png');
     //images
     //sounds
     //spritesheets
