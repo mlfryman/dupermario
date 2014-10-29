@@ -1,0 +1,30 @@
+{"frames": [
+
+{
+	"filename": "mario_graphics2 (1) copy.png",
+	"frame": {"x":2,"y":2,"w":64,"h":65},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":64,"h":65},
+	"sourceSize": {"w":65,"h":66},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mario_graphics2 (1).png",
+	"frame": {"x":68,"y":2,"w":64,"h":65},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":64,"h":65},
+	"sourceSize": {"w":65,"h":66},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "goomba.png",
+	"format": "RGBA8888",
+	"size": {"w":134,"h":69},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ee07223556c75fac8871d4616a916947:c43ed6d90ed033e8570228cc9b90d556:3a3dd894d17489f9079437d8de845266$"
+}
+}
