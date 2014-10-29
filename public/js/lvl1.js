@@ -9,6 +9,9 @@
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
 
+    layer = map.createLayer('World1');
+
+
     layer = map.createLayer(0);
     layer.resizeWorld();
     map.setCollisionBetween(14, 16);
