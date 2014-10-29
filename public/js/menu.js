@@ -4,7 +4,9 @@
   function preload(){
     //load ALL game assets here
     game.load.image('bg', '/assets/background.png');
+    game.load.image('bumper', '/assets/bumper.png');
     game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+
     game.load.spritesheet('coin', '/assets/coin.png', 32, 32);
 
     game.load.tilemap('level1', 'assets/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
