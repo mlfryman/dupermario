@@ -11,6 +11,7 @@
     //images
     //sounds
     //spritesheets
+    game.load.atlas('goomba', '/assets/goomba.png', '/assets/goomba.json');
   }
 
   function create(){
