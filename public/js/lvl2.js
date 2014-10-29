@@ -152,11 +152,11 @@
 
     if (cursors.left.isDown)
     {
-        player.body.angularVelocity = -300;
+        player.body.angularVelocity = -100;
     }
     else if (cursors.right.isDown)
     {
-        player.body.angularVelocity = 300;
+        player.body.angularVelocity = 100;
     }
 
     if (cursors.up.isDown)
