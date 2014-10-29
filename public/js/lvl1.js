@@ -87,10 +87,13 @@
     score = 0;
     txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px Arial", fill: "#ffffff"});
     txtScore.fixedToCamera = true  ;
+
+    spawnGiant();
   };
 
   function update(){
     //physics collisions declared here
+    game.physics.arcade.collide(giant, layer);
     game.physics.arcade.collide(player, layer);
     game.physics.arcade.collide(goombas, layer);
     game.physics.arcade.collide(coins, layer);
@@ -159,5 +162,18 @@
     score += 10;
     txtScore.text = 'Score: ' + score;
     coinSound.play();
+  }
+
+  var giantHP = 100;
+  function spawnGiant() {
+    giant = game.add.sprite(2900, 50, 'giant_mario');
+    game.physics.enable(giant, Phaser.Physics.ARCADE);
+    giant.body.gravity.y=500;
+    giant.body.collideWorldBounds = true;
+    giant.body.fixedRotation = true;
+    giant.frame = 1;
+    giant.animations.add('walking_left', [0,1,2], 6, true);
+    giant.animations.add('walking_right', [3,4,5], 6, true);
+    giant.Text = game.add.text(giant.body.x, giant.body.y - 30, giantHP);
   }
 })();

@@ -6,6 +6,7 @@
     game.load.image('bg', '/assets/background.png');
     game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
     game.load.spritesheet('coin', '/assets/coin.png', 32, 32);
+    game.load.spritesheet('giant_mario', '/assets/giantMario.png', 88.6666, 124);
 
     game.load.tilemap('level1', 'assets/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('SuperMarioBros-World1-1', '/assets/super_mario.png');
