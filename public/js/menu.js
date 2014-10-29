@@ -19,7 +19,7 @@
     //add tile sprite background here
     game.add.tileSprite(0, 0, 800, 600, 'bg');
 
-    var text = game.add.text(game.world.centerX, game.world.centerY, 'Duper Mario!\n Press SPACE to Begin!');
+    var text = game.add.text(300, game.world.centerY, 'Duper Mario!\n Press SPACE to Begin!');
     text. anchor.setTo(0.5);
 
     var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);

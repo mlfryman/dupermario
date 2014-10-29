@@ -1,8 +1,7 @@
 (function(){
   game.state.add('lvl1', {create:create, update:update});
 
-  //variables are declared here
-  //var map;
+  //declare variables here
   function create(){
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -10,7 +9,6 @@
     map.addTilesetImage('SuperMarioBros-World1-1');
 
     layer = map.createLayer('World1');
-
 
     layer = map.createLayer(0);
     layer.resizeWorld();
@@ -26,7 +24,6 @@
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
 
-
     //  Player physics properties. Give the little guy a slight bounce.
     player.anchor.setTo(0.5, 0.5);
     player.body.bounce.y = 0.2;
@@ -39,7 +36,9 @@
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     cursors = game.input.keyboard.createCursorKeys();
 
-    //reset score and time
+
+    player.checkWorldBounds = true;
+    player.outOfBoundsKill = true;
 
     //create the game world
     //timers
@@ -56,6 +55,11 @@
     player.body.velocity.x = 0;
 
     game.physics.arcade.collide(player, layer);
+
+    if (player.alive == false){
+      alert('you dun goofed');
+      game.state.start('menu');
+    };
 
     if (cursors.left.isDown)
     {
