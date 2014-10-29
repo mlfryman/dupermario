@@ -1,1 +1,4 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'duper-mario');
+var game = new Phaser.Game(800, 240, Phaser.CANVAS, 'duper-mario');
+var map;
+var layer;
+var player;
