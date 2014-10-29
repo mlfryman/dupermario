@@ -3,6 +3,7 @@
 
   //declare variables here
   function create(){
+    time = 0;
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
@@ -40,9 +41,10 @@
     player.checkWorldBounds = true;
     player.outOfBoundsKill = true;
 
-    //create the game world
-    //timers
-    //layer.fixedToCamera = false;
+    timer = game.time.events.loop(1000, addTime);
+
+    txtTime = game.add.text(20, 20, time, {font: "30px Arial", fill: "#ffffff"});
+    txtTime.fixedToCamera = true;
   };
 
   function update(){
@@ -90,4 +92,8 @@
     }
   };
 
+  function addTime(){
+    time ++
+    txtTime.text = time;
+  };
 })();
