@@ -4,7 +4,6 @@
   //declare variables here
   var coins
   function create(){
-    time = 0;
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
@@ -33,6 +32,8 @@
     };
     coins.setAll('body.gravity.y', 100);
     coins.setAll('body.bounce.y', 1);
+    coins.setAll('scale.x', 0.5);
+    coins.setAll('scale.y', 0.5);
     //make them spin
     coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
     coins.callAll('animations.play', 'animations', 'spin');
@@ -57,10 +58,14 @@
     player.checkWorldBounds = true;
     player.outOfBoundsKill = true;
 
+    time = 0;
     timer = game.time.events.loop(1000, addTime);
-
-    txtTime = game.add.text(20, 20, 'Time: 0', {font: "30px Arial", fill: "#ffffff"});
+    txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px Arial", fill: "#ffffff"});
     txtTime.fixedToCamera = true  ;
+
+    score = 0;
+    txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtScore.fixedToCamera = true  ;
   };
 
   function update(){
@@ -74,6 +79,8 @@
 
     game.physics.arcade.collide(player, layer);
     game.physics.arcade.collide(coins, layer);
+
+    game.physics.arcade.overlap(player, coins, collectCoin);
 
     if (player.alive == false){
       alert('you dun goofed');
@@ -113,4 +120,11 @@
     time ++
     txtTime.text = 'Time: ' + time;
   };
+
+  function collectCoin(player, coin){
+    coin.kill();
+    score += 10;
+    txtScore.text = 'Score: ' + score;
+  };
+
 })();
