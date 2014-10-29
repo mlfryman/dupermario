@@ -10,6 +10,10 @@
     game.load.tilemap('level1', 'assets/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('SuperMarioBros-World1-1', '/assets/super_mario.png');
     game.load.audio('coin', '/assets/sonic_ring.wav');
+
+    game.load.tilemap('level2', 'assets/platform.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('platformer_tiles', '/assets/platformer_tiles.png');
+    // game.load.image('bg2', '/assets/cool.jpg');
     //images
     //sounds
     //spritesheets
@@ -30,6 +34,6 @@
   }
 
   function start(){
-    game.state.start('lvl1');
+    game.state.start('lvl2');
   }
 })();
