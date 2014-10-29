@@ -5,6 +5,7 @@
   function create(){
 
     coinSound = game.add.audio('coin');
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
@@ -59,7 +60,7 @@
     goombas.enableBody = true;
     goombas.physicsBodyType = Phaser.Physics.ARCADE;
     positions.forEach(function(p){
-      var goomba = goombas.create(p.x, p.y, 'goomba');
+      goomba = goombas.create(p.x, p.y, 'goomba');
       goomba.anchor.setTo(0.5, 0.5);
       goomba.scale.x = 0.5;
       goomba.scale.y = 0.5;
