@@ -2,9 +2,9 @@
   game.state.add('lvl1', {create:create, update:update});
 
   //declare variables here
-  var coins
   function create(){
 
+    coinSound = game.add.audio('coin');
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
@@ -27,8 +27,8 @@
     coins = game.add.group();
     coins.enableBody = true;
     coins.physicsBodyType = Phaser.Physics.ARCADE;
-    for(var i = 0; i < 20; i++){
-      coins.create(i * 250, 30, 'coin', 0);
+    for(var i = 0; i < 40; i++){
+      coins.create(game.world.randomX, 30, 'coin', 0);
     };
     coins.setAll('body.gravity.y', 100);
     coins.setAll('body.bounce.y', 1);
@@ -125,6 +125,7 @@
     coin.kill();
     score += 10;
     txtScore.text = 'Score: ' + score;
+    coinSound.play();
   };
 
 })();

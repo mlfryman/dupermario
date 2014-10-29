@@ -9,6 +9,7 @@
 
     game.load.tilemap('level1', 'assets/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('SuperMarioBros-World1-1', '/assets/super_mario.png');
+    game.load.audio('coin', '/assets/sonic_ring.wav');
     //images
     //sounds
     //spritesheets
