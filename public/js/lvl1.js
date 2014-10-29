@@ -2,6 +2,7 @@
   game.state.add('lvl1', {create:create, update:update});
 
   //declare variables here
+  var coins
   function create(){
     time = 0;
 
@@ -21,6 +22,21 @@
 
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
+
+
+    //coins
+    coins = game.add.group();
+    coins.enableBody = true;
+    coins.physicsBodyType = Phaser.Physics.ARCADE;
+    for(var i = 0; i < 20; i++){
+      coins.create(i * 250, 30, 'coin', 0);
+    };
+    coins.setAll('body.gravity.y', 100);
+    coins.setAll('body.bounce.y', 1);
+    //make them spin
+    coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
+    coins.callAll('animations.play', 'animations', 'spin');
+
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
@@ -43,8 +59,8 @@
 
     timer = game.time.events.loop(1000, addTime);
 
-    txtTime = game.add.text(20, 20, time, {font: "30px Arial", fill: "#ffffff"});
-    txtTime.fixedToCamera = true;
+    txtTime = game.add.text(20, 20, 'Time: 0', {font: "30px Arial", fill: "#ffffff"});
+    txtTime.fixedToCamera = true  ;
   };
 
   function update(){
@@ -57,6 +73,7 @@
     player.body.velocity.x = 0;
 
     game.physics.arcade.collide(player, layer);
+    game.physics.arcade.collide(coins, layer);
 
     if (player.alive == false){
       alert('you dun goofed');
@@ -94,6 +111,6 @@
 
   function addTime(){
     time ++
-    txtTime.text = time;
+    txtTime.text = 'Time: ' + time;
   };
 })();
