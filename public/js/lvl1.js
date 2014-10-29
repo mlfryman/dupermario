@@ -28,10 +28,10 @@
     coins = game.add.group();
     coins.enableBody = true;
     coins.physicsBodyType = Phaser.Physics.ARCADE;
-    for(var i = 0; i < 40; i++){
-      coins.create(game.world.randomX, 30, 'coin', 0);
+    for(var i = 0; i < 75; i++){
+      coins.create(game.world.randomX, 50 * Math.random(), 'coin', 0);
     };
-    coins.setAll('body.gravity.y', 100);
+    coins.setAll('body.gravity.y', 100 * Math.random() + 50);
     coins.setAll('body.bounce.y', 1);
     coins.setAll('scale.x', 0.5);
     coins.setAll('scale.y', 0.5);
