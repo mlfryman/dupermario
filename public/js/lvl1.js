@@ -5,6 +5,9 @@
   function create(){
 
     coinSound = game.add.audio('coin');
+    level1music = game.add.audio('level1Music', 1, true);
+    level1music.play();
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
@@ -105,6 +108,7 @@
   };
 
   function killPlayer(){
+    level1music.stop()
     alert('you dun goofed');
     game.state.start('menu');
   }
