@@ -135,6 +135,7 @@
     if (giant.alive == true){
     giantShoots();
   }
+
   if (giantHP <= 0 ) {
     giant.kill();
     setTimeout(function() {
@@ -255,6 +256,7 @@
     if(player.body.touching.down && enemy.body.touching.up){
       giantHP -= 25;
       player.body.velocity.y = -150;
+
     }else{
       killPlayer();
     }

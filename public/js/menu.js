@@ -22,6 +22,14 @@
     game.load.tilemap('level2', 'assets/platform.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('platformer_tiles', '/assets/platformer_tiles.png');
     game.load.image('fireball', '/assets/fireball.png ');
+    game.load.image('trophy', '/assets/trophy.png ');
+
+
+    // game.load.image('bg2', '/assets/cool.jpg');
+    //images
+    //sounds
+    //spritesheets
+
 
     // audio
     game.load.audio('splash', '/assets/splash.mp3');
@@ -50,7 +58,7 @@
   }
 
   function start(){
-    game.state.start('lvl1');
+    game.state.start('lvl2');
 
   }
 
