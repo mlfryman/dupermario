@@ -150,7 +150,7 @@
     if(player.alive == false){
       killPlayer();
     };
-  };
+  }
 
 
   function killPlayer(){

@@ -57,7 +57,7 @@
     //trophy.body.bounce.y = .2;
 
     // The player and its settings
-    player = game.add.sprite(3089, 226, 'dude');
+    player = game.add.sprite(30, 226, 'dude');
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
