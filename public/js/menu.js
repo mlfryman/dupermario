@@ -46,6 +46,10 @@
     game.load.audio('level2Music', '/assets/audio/level-two-theme.ogg');
     game.load.audio('gameOver', '/assets/audio/game_over.wav');
 
+    game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+    game.load.spritesheet('coin', '/assets/coin.png', 32, 32);
+    game.load.atlas('goomba', '/assets/goomba.png', '/assets/goomba.json');
+    game.load.spritesheet('blooper', 'assets/enemy-gif/blooper-sprite.png', 32, 48);
   }
 
   function create(){
@@ -65,7 +69,7 @@
   }
 
   function start(){
-    game.state.start('lvl1');
+    game.state.start('lvl2');
 
     // MLF NOTE: temporarily changed $ start('menu') to gameover to debug
   }
