@@ -137,7 +137,7 @@ if (giantHP <= 0 ) {
   function killPlayer(){
     level1Music.stop()
     alert('you dun goofed');
-    game.state.start('menu');
+    game.state.start('gameover');
   }
 
   function movePlayer(){
