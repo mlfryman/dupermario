@@ -6,6 +6,7 @@
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
+    gameOver = game.add.audio('gameOver');
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
     level2Music = game.add.audio('level2Music', 1, true);
@@ -96,7 +97,8 @@
     };
   };
   function killPlayer(){
-    alert('you dun goofed');
+    //alert('you dun goofed');
+    gameOver.play();
     game.state.start('menu');
   }
 

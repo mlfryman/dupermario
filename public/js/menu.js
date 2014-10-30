@@ -28,6 +28,7 @@
     game.load.audio('coin', ['/assets/audio/sonic_ring.wav', '/assets/audio/sonic_ring.wav']);
     game.load.audio('level1Music', '/assets/audio/level-one-theme.ogg');
     game.load.audio('level2Music', '/assets/audio/level-two-theme.ogg');
+    game.load.audio('gameOver', '/assets/audio/game_over.wav');
 
 
   }

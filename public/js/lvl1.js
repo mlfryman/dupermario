@@ -1,17 +1,29 @@
 (function(){
-  game.state.add('lvl1', {create:create, update:update});
+  game.state.add('lvl1', {create:create, update:update, render:render});
 
   var positions = [{x:243, y:100},
                    {x:1253, y:192},
-                   {x:1920, y:184}];
+                   {x:1920, y:184},
+                   {x:981, y:184.5},
+                   {x:1369, y:52},
+                   {x:1498, y:52},
+                   {x:2080, y:185}];
+  var bumps = [{x:1826, y:184},
+               {x:1111, y:184.5},
+               {x:1256, y:56},
+               {x:1423, y:56},
+               {x:1530, y:56}];
   function create(){
     bumpers = game.add.group();
     bumpers.enableBody = true;
-    bumpers.createMultiple(20, 'bumper');
-    bumper = bumpers.getFirstDead();
-    bumper.reset(1826, 184);
-    bumper.body.immovable = true;
+    bumpers.physicsBodyType = Phaser.Physics.ARCADE;
+    bumps.forEach(function(b){
+      b = bumpers.create(b.x, b.y, 'bumper');
+      b.body.immovable = true;
+    }, this);
+
     coinSound = game.add.audio('coin');
+    gameOver = game.add.audio('gameOver');
     level1Music = game.add.audio('level1Music', 1, true);
     level1Music.play();
 
@@ -21,7 +33,7 @@
     layer = map.createLayer('World1');
     layer.resizeWorld();
 
-    layer.debug = true
+    //layer.debug = true
 
     map.setCollisionBetween(14, 16);
     map.setCollisionBetween(21, 22);
@@ -29,8 +41,9 @@
     map.setCollision(40);
 
     // The player and its settings
-    player = game.add.sprite(2100, game.world.height - 150, 'dude');
 
+    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    //player = game.add.sprite(1805, 120, 'dude');
     //coins
     coins = game.add.group();
     coins.enableBody = true;
@@ -49,7 +62,7 @@
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
-
+    player.body.setSize(18, 39, -2, 4);
     //  Player physics properties. Give the little guy a slight bounce.
     player.anchor.setTo(0.5, 0.5);
     player.body.bounce.y = 0.2;
@@ -124,9 +137,10 @@
   }
   if (giantHP <= 0 ) {
     giant.kill();
-    level1Music.stop();
     setTimeout(function() {
-      game.state.start('win1');}, 3000);
+      game.state.start('win1');
+      level1Music.stop();
+      }, 3000);
   }
 
     //input controls
@@ -139,7 +153,8 @@
 
   function killPlayer(){
     level1Music.stop()
-    alert('you dun goofed');
+    gameOver.play();
+    //alert('you dun goofed');
     game.state.start('gameover');
   }
 
@@ -170,7 +185,7 @@
   function bop(player, enemy){
     if(player.body.touching.down && enemy.body.touching.up){
       enemy.kill();
-      player.body.velocity.y = -28;
+      player.body.velocity.y = -100;
     }else{
       killPlayer();
     }
@@ -222,6 +237,7 @@
         fireball = fireballs.create(giant.body.x + giant.body.width / 2 - 40, giant.body.y + giant.body.height / 2 + 5, 'fireball');
         }
         game.physics.enable(fireball, Phaser.Physics.ARCADE);
+        fireball.body.setSize(30, 35);
         fireball.body.gravity.y = 500;
         fireball.body.bounce.y = 1;
         fireball.outOfBoundsKill = true;
@@ -243,4 +259,18 @@
       killPlayer();
     }
   }
+
+  function render(){
+    /*
+    game.debug.body(player);
+    for (var i = 0; i < fireballs.length; i++){
+      game.debug.body(fireballs.children[i]);
+    }
+    game.debug.body(player);
+    for (var i = 0; i < bumpers.length; i++){
+      game.debug.body(bumpers.children[i]);
+    }
+    */
+  }
+
 })();
