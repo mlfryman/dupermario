@@ -104,7 +104,7 @@
     game.physics.arcade.collide(goombas, layer);
     game.physics.arcade.collide(coins, layer);
     game.physics.arcade.overlap(player, goombas, bop, null, this);
-    game.physics.arcade.overlap(player, giant, bop, null, this);
+    game.physics.arcade.overlap(player, giant, hitGiant, null, this);
     game.physics.arcade.overlap(player, coins, collectCoin);
     game.physics.arcade.collide(fireballs, layer);
     game.physics.arcade.collide(fireballs, player, killPlayer, null, this);
@@ -120,7 +120,10 @@
     if (giant.alive == true){
     giantShoots();
   }
-
+if (giantHP <= 0 ) {
+    giant.kill();
+    setTimeout(function() {game.state.start('lvl2');}, 3000);
+}
 
     //input controls
     movePlayer();
@@ -235,6 +238,15 @@
       } else {
         fireball.body.velocity.x = -200;
       }
+    }
+  }
+
+  function hitGiant (player, enemy) {
+    if(player.body.touching.down && enemy.body.touching.up){
+      giantHP -= 100;
+      player.body.bounce.y = .7;
+    }else{
+      killPlayer();
     }
   }
 })();
