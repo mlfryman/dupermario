@@ -84,11 +84,11 @@
 
     time = 0;
     timer = game.time.events.loop(1000, addTime);
-    txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px press_startregular", fill: "#FCFCFC"});
+    txtTime = game.add.text(20, 30, 'Time: 0', {font: "10px press_start_kregular", fill: "#FCFCFC"});
     txtTime.fixedToCamera = true  ;
 
     score = 0;
-    txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px press_startregular", fill: "#FCFCFC"});
+    txtScore = game.add.text(20, 10, 'Score: 0', {font: "10px press_start_kregular", fill: "#FCFCFC"});
     txtScore.fixedToCamera = true  ;
   };
 

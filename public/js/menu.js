@@ -23,8 +23,11 @@
     //add tile sprite background here
     game.add.tileSprite(0, 0, 800, 600, 'bg');
 
-    var text = game.add.text(300, game.world.centerY, 'Duper Mario!\n Press SPACE to Begin!');
-    text. anchor.setTo(0.5);
+    var title = game.add.text(400, 75, 'Duper Mario!', {font: "65px super_plumber_brothersregular", fill: "#C64C1D", align: "center" });
+    title. anchor.setTo(0.5);
+
+    var instructions = game.add.text(400, game.world.centerY + 20, 'Press SPACE to play', {font: "15px press_start_kregular", fill: "#FCFCFC", align: "center" });
+    instructions.anchor.setTo(0.5);
 
     var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     spaceKey.onDown.add(start);
