@@ -9,6 +9,8 @@
     coinSound   = game.add.audio('coin');
     splashSound = game.add.audio('splash');
     swim        = game.add.audio('swim', 1);
+    jumpSound     = game.add.audio('jump', 0.8);
+    pain          = game.add.audio('pain', 0.5);
     level2Music = game.add.audio('level2Music', 1, true);
     level2Music.play();
 
@@ -134,6 +136,7 @@
     }
     //  Allow the player to jump if they are touching the ground.
     if (cursors.up.isDown && player.body.onFloor()){
+      jumpSound.play();
       player.body.velocity.y = -200;
     }
 
