@@ -1,8 +1,8 @@
 (function(){
   game.state.add('lvl2', {create:create, update:update});
 
-  //variables are declared here
-  var coins2
+  // variables are declared here
+
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -16,7 +16,7 @@
 
     map = game.add.tilemap('level2');
     map.addTilesetImage('platformer_tiles');
-    //reset score and time
+    // reset score and time
     layer = map.createLayer('world2');
     layer = map.createLayer(0);
     layer.resizeWorld();
@@ -25,23 +25,22 @@
     map.setCollisionBetween(105, 107);
     map.setCollision(79);
 
-    //coins
-    coins2 = game.add.group();
-    coins2.enableBody = true;
-    coins2.physicsBodyType = Phaser.Physics.ARCADE;
-
+    // coins
+    coins = game.add.group();
+    coins.enableBody = true;
+    coins.physicsBodyType = Phaser.Physics.ARCADE;
     for(var i = 0; i < 50; i++){
-      coins2.create(game.world.randomX, game.world.randomY, 'coin', 0);
+      coins.create(game.world.randomX, game.world.randomY, 'coin', 0);
       // coins.create(game.world.randomY, 100, 'coin', 0);
     };
 
-    coins2.setAll('body.gravity.y', 100);
-    coins2.setAll('body.bounce.y', 1);
-    coins2.setAll('scale.x', 0.5);
-    coins2.setAll('scale.y', 0.5);
+    coins.setAll('body.gravity.y', 100);
+    coins.setAll('body.bounce.y', 1);
+    coins.setAll('scale.x', 0.5);
+    coins.setAll('scale.y', 0.5);
     //make them spin
-    coins2.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
-    coins2.callAll('animations.play', 'animations', 'spin');
+    coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
+    coins.callAll('animations.play', 'animations', 'spin');
 
 
     // The player and its settings
@@ -81,7 +80,7 @@
     // game.physics.arcade.collide(goombas, layer);
     game.physics.arcade.collide(coins2, layer);
     // game.physics.arcade.overlap(player, goombas, bop, null, this);
-    game.physics.arcade.overlap(player, coins2, collectCoin);
+    game.physics.arcade.overlap(player, coins, collectCoin);
     //input controls
     movePlayer();
 
