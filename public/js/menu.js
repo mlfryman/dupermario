@@ -36,17 +36,17 @@
 
 
     // audio
-    game.load.audio('splash', '/assets/splash.mp3');
-    game.load.audio('jump', '/assets/mario-woohoo.WAV');
-    game.load.audio('fireball', '/assets/Cannon Shot.wav');
-    game.load.audio('bossdead', '/assets/Fireball.wav');
-    game.load.audio('swim','/assets/water.WAV');
-    game.load.audio('haha', '/assets/mario-haha.WAV');
-    game.load.audio('pain', '/assets/mario-pain.WAV');
-    game.load.audio('coin', ['/assets/audio/sonic_ring.wav', '/assets/audio/sonic_ring.wav']);
+    game.load.audio('splash', '/assets/audio/splash.mp3');
+    game.load.audio('jump', '/assets/audio/mario-woohoo.wav');
+    game.load.audio('fireball', '/assets/audio/cannon-shot.wav');
+    game.load.audio('bossdead', '/assets/audio/fireball.wav');
+    game.load.audio('swim','/assets/audio/water.wav');
+    game.load.audio('haha', '/assets/audio/mario-haha.wav');
+    game.load.audio('pain', '/assets/audio/mario-pain.wav');
+    game.load.audio('coin', ['/assets/audio/sonic_ring.wav', '/assets/audio/sonic_ring.ogg']);
     game.load.audio('level1Music', '/assets/audio/level-one-theme.ogg');
     game.load.audio('level2Music', '/assets/audio/level-two-theme.ogg');
-    game.load.audio('gameOver', '/assets/audio/game_over.wav');
+    game.load.audio('gameOver', '/assets/audio/game-over.wav');
     game.load.audio('victory', '/assets/audio/victory.wav');
 
     game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
