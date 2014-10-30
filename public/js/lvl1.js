@@ -133,16 +133,17 @@
     giantPath();
 
     if (giant.alive == true){
-    giantShoots();
-  }
+      giantShoots();
+    }
 
-  if (giantHP <= 0 ) {
-    giant.kill();
-    setTimeout(function() {
-      game.state.start('win1');
-      level1Music.stop();
-      }, 3000);
-  }
+    if (giantHP <= 0 ) {
+      giant.kill();
+      setTimeout(function() {
+        game.state.start('win1');
+        level1Music.stop();
+        }, 3000);
+      }
+    }
 
     //input controls
     movePlayer();

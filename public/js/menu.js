@@ -6,7 +6,11 @@
     // images
     game.load.image('bg', '/assets/background.png');
     game.load.image('bumper', '/assets/bumper.png');
-    game.load.spritesheet('coin', '/assets/coin.png', 32, 32);
+    game.load.image('gold', '/assets/particles/gold.png');
+    game.load.image('star-part', '/assets/particles/star_particle.png');
+    game.load.image('diamond', '/assets/particles/diamond.png');
+    game.load.image('1up', '/assets/particles/1up.png');
+    game.load.image('star', '/assets/particles/star.png');
 
     // spritesheets
     game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
@@ -38,13 +42,12 @@
     game.load.audio('level2Music', '/assets/audio/level-two-theme.ogg');
     game.load.audio('gameOver', '/assets/audio/game_over.wav');
 
-
   }
 
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    //add tile sprite background here
+    // add tile sprite background here
     game.add.tileSprite(0, 0, 800, 600, 'bg');
 
     var title = game.add.text(400, 75, 'Duper Mario!', {font: "65px super_plumber_brothersregular", fill: "#C64C1D", align: "center" });
@@ -58,8 +61,9 @@
   }
 
   function start(){
-    game.state.start('lvl2');
+    game.state.start('lvl1');
 
+    // MLF NOTE: temporarily changed $ start('menu') to gameover to debug
   }
 
 })();
