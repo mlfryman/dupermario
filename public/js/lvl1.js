@@ -36,9 +36,6 @@
     pain          = game.add.audio('pain', 0.5);
     bossKilled    = game.add.audio('bossdead', 0.5);
 
-    level1Music = game.add.audio('level1Music', 1, true);
-    level1Music.play();
-
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
