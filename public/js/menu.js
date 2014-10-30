@@ -1,5 +1,5 @@
 (function(){
-  game.state.add('menu', {preload:preload, create:create, update:update, render:render });
+  game.state.add('menu', {preload:preload, create:create, update:update});
 
   function preload(){
     /* NOTE: load ALL game assets here */
@@ -73,7 +73,7 @@
     bumper.body.immovable = true;
     bumper.scale.x = 50;
     bumper.scale.y = 3;
-    game.debug.body(bumper);
+    //game.debug.body(bumper);
     player = game.add.sprite(32, game.world.height - 150, 'dude');
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
