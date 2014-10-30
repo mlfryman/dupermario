@@ -40,6 +40,7 @@
   }
 
   function start(){
-    game.state.start('lvl1');
+    // MLF NOTE: temporarily changed $ start('menu') to gameover to degub
+    game.state.start('gameover');
   }
 })();
