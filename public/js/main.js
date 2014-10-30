@@ -6,7 +6,7 @@ var map, layer, player;
 /* AUDIO */
 var level1Music, level2Music,
     coinSound, jumpSound, fireBallSound, bossKilled,
-    swim, gameOver;
+    swim, gameOver, victory;
 
 /* TIME & SCORE */
 var score = 0, txtScore,

@@ -45,6 +45,7 @@
     game.load.audio('level1Music', '/assets/audio/level-one-theme.ogg');
     game.load.audio('level2Music', '/assets/audio/level-two-theme.ogg');
     game.load.audio('gameOver', '/assets/audio/game_over.wav');
+    game.load.audio('victory', '/assets/audio/victory.wav');
 
     game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
     game.load.spritesheet('coin', '/assets/coin.png', 32, 32);

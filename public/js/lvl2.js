@@ -16,6 +16,7 @@
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
     swim        = game.add.audio('swim', 1);
+    victory     = game.add.audio('victory', 1);
     level2Music = game.add.audio('level2Music', 1, true);
     level2Music.play();
 
@@ -139,8 +140,9 @@
   };
   function killPlayer(){
     //alert('you dun goofed');
+    level2Music.stop()
     gameOver.play();
-    game.state.start('menu');
+    game.state.start('gameover');
   }
 
   function movePlayer(){
@@ -172,7 +174,7 @@
   function bop(player, enemy){
     if(player.body.touching.down && enemy.body.touching.up){
       enemy.kill();
-      player.body.velocity.y = -28;
+      player.body.velocity.y = -100;
     }else{
       killPlayer();
     }
@@ -191,12 +193,14 @@
   }
 
 function collectTrophy(player, trophy){
+  level2Music.stop()
   trophy.kill();
+  victory.play();
   score += 100;
   txtScore.text = 'Score: ' + score;
   coinSound.play();
 setTimeout(function() {
-  game.state.start('win2');}, 3000);
+  game.state.start('win2');}, 1);
 }
   function moverUnderwater(){
     player.body.velocity.x = 0;
