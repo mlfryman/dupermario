@@ -15,6 +15,8 @@
     layer = map.createLayer(0);
     layer.resizeWorld();
 
+    // layer.debug = true
+
     map.setCollisionBetween(14, 16);
     map.setCollisionBetween(21, 22);
     map.setCollisionBetween(27, 28);

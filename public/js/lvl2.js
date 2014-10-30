@@ -19,6 +19,8 @@
     layer = map.createLayer(0);
     layer.resizeWorld();
     map.setCollisionBetween(60, 62);
+    map.setCollisionBetween(4, 5);
+    map.setCollisionBetween(9, 11);
     map.setCollisionBetween(41, 44);
     map.setCollisionBetween(105, 107);
     map.setCollision(79);
@@ -58,7 +60,7 @@
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     cursors = game.input.keyboard.createCursorKeys();
 
-    // layer.debug = true
+    layer.debug = true
     time = 0;
     timer = game.time.events.loop(1000, addTime);
     txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px Arial", fill: "#ffffff"});
