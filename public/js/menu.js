@@ -70,7 +70,7 @@
   }
 
   function start(){
-    game.state.start('lvl2');
+    game.state.start('lvl1');
 
     // MLF NOTE: temporarily changed $ start('menu') to gameover to debug
   }
