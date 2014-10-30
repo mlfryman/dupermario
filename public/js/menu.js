@@ -61,7 +61,7 @@
   }
 
   function start(){
-    game.state.start('lvl2');
+    game.state.start('lvl1');
 
   }
 

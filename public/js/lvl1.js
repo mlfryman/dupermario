@@ -26,7 +26,7 @@
     layer = map.createLayer('World1');
     layer.resizeWorld();
 
-    layer.debug = true
+    // layer.debug = true
 
     map.setCollisionBetween(14, 16);
     map.setCollisionBetween(21, 22);
@@ -34,7 +34,7 @@
     map.setCollision(40);
 
     // The player and its settings
-    player = game.add.sprite(2100, game.world.height - 150, 'dude');
+    player = game.add.sprite(32, game.world.height - 150, 'dude');
 
     //coins
     coins = game.add.group();
