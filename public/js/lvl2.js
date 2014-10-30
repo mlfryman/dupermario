@@ -1,6 +1,12 @@
 (function(){
   game.state.add('lvl2', {create:create, update:update});
-
+  var positions = [{x:243, y:244, iT:220, fT:464},
+                   {x:928, y:178, iT:800, fT:977},
+                   {x:982, y:286, iT:864, fT:1136},
+                   {x:2950, y:93, iT:2673, fT:3166},
+                   {x:2833, y:257, iT:2640, fT:3136},
+                   {x:3184, y:198, iT:3008, fT:3183},
+                   {x:2495, y:295, iT:2352, fT:2656}];
   //variables are declared here
 
   function create(){
@@ -20,6 +26,7 @@
     layer = map.createLayer('world2');
     layer = map.createLayer(0);
     layer.resizeWorld();
+    layer.debug = true;
     map.setCollisionBetween(60, 62);
     map.setCollisionBetween(41, 44);
     map.setCollisionBetween(105, 107);
@@ -40,14 +47,32 @@
     //make them spin
     coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
     coins.callAll('animations.play', 'animations', 'spin');
-
+    //bloopers
+    bloopers = game.add.group();
+    bloopers.enableBody = true;
+    bloopers.physicsBodyType = Phaser.Physics.ARCADE;
+    positions.forEach(function(p){
+      blooper = bloopers.create(p.x, p.y, 'blooper');
+      blooper.anchor.setTo(0.5, 0.5);
+      blooper.scale.x = 0.5;
+      blooper.scale.y = 0.5;
+      blooper.animations.add('left', [0, 1], 4, true);
+      blooper.animations.play('left');
+      var tween = game.add.tween(blooper)
+                 .to({x:p.iT}, 2000, Phaser.Easing.Linear.None)
+                 .to({x:p.fT}, 2000, Phaser.Easing.Linear.None)
+                 .loop()
+                 .start();
+    }, this);
 
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 450, 'dude');
+    //player = game.add.sprite(2948, 130, 'dude');
+
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
-
+    player.body.setSize(18, 39, -2, 4);
     //  Player physics properties. Give the little guy a slight bounce and camera follow.
     player.anchor.setTo(0.5, 0.5);
     player.body.bounce.y = 0.2;
@@ -76,9 +101,9 @@
   function update(){
     //physics collisions declared here
     game.physics.arcade.collide(player, layer);
-    // game.physics.arcade.collide(goombas, layer);
+    game.physics.arcade.collide(bloopers, layer);
     game.physics.arcade.collide(coins, layer);
-    // game.physics.arcade.overlap(player, goombas, bop, null, this);
+    game.physics.arcade.overlap(player, bloopers, bop, null, this);
     game.physics.arcade.overlap(player, coins, collectCoin);
     //input controls
     movePlayer();
@@ -89,7 +114,6 @@
       splashSound.play();
       moverUnderwater();
     }
-    // goombas.forEachAlive(moveEnemies, this);
     if(player.alive == false){
       killPlayer();
     };
@@ -129,13 +153,6 @@
       player.body.velocity.y = -28;
     }else{
       killPlayer();
-    }
-  }
-  function moveEnemies(g){
-    if(g.x===g.bounceLeft){
-      g.body.velocity.x = 100;
-    }else if(g.x===g.bounceRight){
-      g.body.velocity.x = -100;
     }
   }
 
