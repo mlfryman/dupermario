@@ -11,6 +11,7 @@
     game.load.tilemap('level1', 'assets/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('SuperMarioBros-World1-1', '/assets/super_mario.png');
     game.load.audio('coin', '/assets/sonic_ring.wav');
+    game.load.audio('splash', '/assets/splash.mp3');
 
     game.load.tilemap('level2', 'assets/platform.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('platformer_tiles', '/assets/platformer_tiles.png');

@@ -5,8 +5,11 @@
   function create(){
 
     coinSound = game.add.audio('coin');
+<<<<<<< HEAD
     level1music = game.add.audio('level1Music', 1, true);
     level1music.play();
+=======
+>>>>>>> e2255a8ff5fa436d724bc9e3039f86bab3e4f9e8
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
@@ -62,7 +65,7 @@
     goombas.enableBody = true;
     goombas.physicsBodyType = Phaser.Physics.ARCADE;
     positions.forEach(function(p){
-      var goomba = goombas.create(p.x, p.y, 'goomba');
+      goomba = goombas.create(p.x, p.y, 'goomba');
       goomba.anchor.setTo(0.5, 0.5);
       goomba.scale.x = 0.5;
       goomba.scale.y = 0.5;
