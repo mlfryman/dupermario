@@ -1,21 +1,26 @@
 (function(){
   game.state.add('lvl2', {create:create, update:update});
 
-  // variables are declared here
+  var positions = [{x:243, y:244, iT:220, fT:464},
+                   {x:928, y:178, iT:800, fT:977},
+                   {x:982, y:286, iT:864, fT:1136},
+                   {x:2950, y:93, iT:2673, fT:3166},
+                   {x:2833, y:257, iT:2640, fT:3136},
+                   {x:3184, y:198, iT:3008, fT:3183},
+                   {x:2495, y:295, iT:2352, fT:2656}];
 
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    coinSound   = game.add.audio('coin');
+    gameOver = game.add.audio('gameOver');
+    coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
     swim        = game.add.audio('swim', 1);
     jumpSound     = game.add.audio('jump', 0.8);
     pain          = game.add.audio('pain', 0.5);
+    victory     = game.add.audio('victory', 1);
     level2Music = game.add.audio('level2Music', 1, true);
     level2Music.play();
-
-    // game.add.tileSprite(0,0, 'bg2');
-    // game.add.tileSprite(0, 0, 800, 600, 'bg2');
 
     map = game.add.tilemap('level2');
     map.addTilesetImage('platformer_tiles');
@@ -23,6 +28,7 @@
     layer = map.createLayer('world2');
     layer = map.createLayer(0);
     layer.resizeWorld();
+    //layer.debug = true;
     map.setCollisionBetween(60, 62);
     map.setCollisionBetween(4, 5);
     map.setCollisionBetween(9, 11);
@@ -59,11 +65,32 @@
     //trophy.body.bounce.y = .2;
 
     // The player and its settings
-    player = game.add.sprite(30, 226, 'dude');
+    player = game.add.sprite(30, 30, 'dude');
+    //bloopers
+    bloopers = game.add.group();
+    bloopers.enableBody = true;
+    bloopers.physicsBodyType = Phaser.Physics.ARCADE;
+    positions.forEach(function(p){
+      blooper = bloopers.create(p.x, p.y, 'blooper');
+      blooper.anchor.setTo(0.5, 0.5);
+      blooper.scale.x = 0.5;
+      blooper.scale.y = 0.5;
+      blooper.animations.add('left', [0, 1], 4, true);
+      blooper.animations.play('left');
+      var tween = game.add.tween(blooper)
+                 .to({x:p.iT}, 2000, Phaser.Easing.Linear.None)
+                 .to({x:p.fT}, 2000, Phaser.Easing.Linear.None)
+                 .loop()
+                 .start();
+    }, this);
+
+    // The player and its settings
+    //player = game.add.sprite(2948, 130, 'dude');
+
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
-
+    player.body.setSize(18, 39, -2, 4);
     //  Player physics properties. Give the little guy a slight bounce and camera follow.
     player.anchor.setTo(0.5, 0.5);
     player.body.bounce.y = 0.2;
@@ -90,9 +117,9 @@
   function update(){
     //physics collisions declared here
     game.physics.arcade.collide(player, layer);
-    // game.physics.arcade.collide(goombas, layer);
+    game.physics.arcade.collide(bloopers, layer);
     game.physics.arcade.collide(coins, layer);
-    // game.physics.arcade.overlap(player, goombas, bop, null, this);
+    game.physics.arcade.overlap(player, bloopers, bop, null, this);
     game.physics.arcade.overlap(player, coins, collectCoin);
     //trophy collide
     game.physics.arcade.collide(trophy, layer);
@@ -106,14 +133,15 @@
       splashSound.play();
       moverUnderwater();
     }
-    // goombas.forEachAlive(moveEnemies, this);
     if(player.alive == false){
       killPlayer();
     };
   };
   function killPlayer(){
-    alert('you dun goofed');
-    game.state.start('menu');
+    //alert('you dun goofed');
+    level2Music.stop()
+    gameOver.play();
+    game.state.start('gameover');
   }
 
   function movePlayer(){
@@ -146,16 +174,9 @@
   function bop(player, enemy){
     if(player.body.touching.down && enemy.body.touching.up){
       enemy.kill();
-      player.body.velocity.y = -28;
+      player.body.velocity.y = -100;
     }else{
       killPlayer();
-    }
-  }
-  function moveEnemies(g){
-    if(g.x===g.bounceLeft){
-      g.body.velocity.x = 100;
-    }else if(g.x===g.bounceRight){
-      g.body.velocity.x = -100;
     }
   }
 
@@ -172,12 +193,14 @@
   }
 
 function collectTrophy(player, trophy){
+  level2Music.stop()
   trophy.kill();
+  victory.play();
   score += 100;
   txtScore.text = 'Score: ' + score;
   coinSound.play();
 setTimeout(function() {
-  game.state.start('win2');}, 3000);
+  game.state.start('win2');}, 1);
 }
   function moverUnderwater(){
     player.body.velocity.x = 0;
