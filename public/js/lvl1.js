@@ -122,7 +122,7 @@
   }
 if (giantHP <= 0 ) {
     giant.kill();
-    setTimeout(function() {game.state.start('lvl2');}, 3000);
+    setTimeout(function() {game.state.start('lvl2');}, 10000);
 }
 
     //input controls
@@ -243,7 +243,7 @@ if (giantHP <= 0 ) {
 
   function hitGiant (player, enemy) {
     if(player.body.touching.down && enemy.body.touching.up){
-      giantHP -= 100;
+      giantHP -= 100
       player.body.bounce.y = .7;
     }else{
       killPlayer();
