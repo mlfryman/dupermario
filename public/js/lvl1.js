@@ -233,8 +233,8 @@ if (giantHP <= 0 ) {
 
   function hitGiant (player, enemy) {
     if(player.body.touching.down && enemy.body.touching.up){
-      giantHP -= 100;
-      player.body.bounce.y = .7;
+      giantHP -= 25;
+      player.body.velocity.y = -150;
     }else{
       killPlayer();
     }
