@@ -224,7 +224,7 @@ if (giantHP <= 0 ) {
         fireball.body.velocity.x = 0;
         if (facingGiant == 'right'){
           fireball.body.velocity.x = 200;
-      } else {
+        } else {
         fireball.body.velocity.x = -200;
       }
     }
