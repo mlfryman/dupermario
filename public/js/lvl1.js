@@ -119,11 +119,12 @@
     if (giant.alive == true){
     giantShoots();
   }
-if (giantHP <= 0 ) {
+  if (giantHP <= 0 ) {
     giant.kill();
     level1Music.stop();
-    setTimeout(function() {game.state.start('lvl2');}, 3000);
-}
+    setTimeout(function() {
+      game.state.start('lvl2');}, 3000);
+  }
 
     //input controls
     movePlayer();
@@ -136,7 +137,7 @@ if (giantHP <= 0 ) {
   function killPlayer(){
     level1Music.stop()
     alert('you dun goofed');
-    game.state.start('menu');
+    game.state.start('gameover');
   }
 
   function movePlayer(){
