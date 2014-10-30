@@ -16,7 +16,6 @@
   function create(){
     bumpers = game.add.group();
     bumpers.enableBody = true;
-<<<<<<< HEAD
     bumpers.physicsBodyType = Phaser.Physics.ARCADE;
     bumps.forEach(function(b){
       b = bumpers.create(b.x, b.y, 'bumper');
@@ -25,7 +24,6 @@
 
     coinSound = game.add.audio('coin');
     gameOver = game.add.audio('gameOver');
-=======
     bumpers.createMultiple(20, 'bumper');
     bumper = bumpers.getFirstDead();
     bumper.reset(1826, 184);
@@ -36,7 +34,6 @@
     coinSound     = game.add.audio('coin', 0.5);
     bossKilled    = game.add.audio('bossdead', 0.5);
 
->>>>>>> 7aa4c9d5a4249891f8c22ef8ff3cd6b27b0034a1
     level1Music = game.add.audio('level1Music', 1, true);
     level1Music.play();
 
@@ -156,7 +153,6 @@
         level1Music.stop();
         }, 3000);
       }
-    }
 
     //input controls
     movePlayer();
@@ -164,6 +160,7 @@
       killPlayer();
     };
   }
+
 
 
   function killPlayer(){
