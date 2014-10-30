@@ -9,6 +9,7 @@
     gameOver = game.add.audio('gameOver');
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
+    swim        = game.add.audio('swim', 1);
     level2Music = game.add.audio('level2Music', 1, true);
     level2Music.play();
 
@@ -137,6 +138,8 @@
     if (cursors.up.isDown && player.body.onFloor()){
       player.body.velocity.y = -200;
     }
+
+
   }
 
   function bop(player, enemy){
@@ -178,22 +181,26 @@ setTimeout(function() {
   function moverUnderwater(){
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
-
+    // swim.play();
 
     if (cursors.up.isDown)
     {
         player.body.velocity.y = -250;
+        swim.play();
         // particleBurst();
     }
     else if (cursors.down.isDown)
     {
+
         player.body.velocity.y = 100;
+        swim.play();
         // particleBurst();
     }
 
     if (cursors.left.isDown)
     {
         player.body.velocity.x = -100;
+        swim.play();
         // player.scale.x = -1;
         player.animations.play('left');
 
@@ -201,7 +208,9 @@ setTimeout(function() {
     }
     else if (cursors.right.isDown)
     {
+
         player.body.velocity.x = 100;
+        swim.play();
         // player.scale.x = 1;
         player.animations.play('right');
         // particleBurst();

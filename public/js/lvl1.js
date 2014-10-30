@@ -16,6 +16,7 @@
   function create(){
     bumpers = game.add.group();
     bumpers.enableBody = true;
+<<<<<<< HEAD
     bumpers.physicsBodyType = Phaser.Physics.ARCADE;
     bumps.forEach(function(b){
       b = bumpers.create(b.x, b.y, 'bumper');
@@ -24,6 +25,18 @@
 
     coinSound = game.add.audio('coin');
     gameOver = game.add.audio('gameOver');
+=======
+    bumpers.createMultiple(20, 'bumper');
+    bumper = bumpers.getFirstDead();
+    bumper.reset(1826, 184);
+    bumper.body.immovable = true;
+
+    fireBallSound = game.add.audio('fireball', 0.5);
+    jumpSound     = game.add.audio('jump', 0.3);
+    coinSound     = game.add.audio('coin', 0.5);
+    bossKilled    = game.add.audio('bossdead', 0.5);
+
+>>>>>>> 7aa4c9d5a4249891f8c22ef8ff3cd6b27b0034a1
     level1Music = game.add.audio('level1Music', 1, true);
     level1Music.play();
 
@@ -33,7 +46,7 @@
     layer = map.createLayer('World1');
     layer.resizeWorld();
 
-    //layer.debug = true
+    // layer.debug = true
 
     map.setCollisionBetween(14, 16);
     map.setCollisionBetween(21, 22);
@@ -180,6 +193,7 @@
     }
     //  Allow the player to jump if they are touching the ground.
     if (cursors.up.isDown && player.body.onFloor()){
+      jumpSound.play();
       player.body.velocity.y = -200;
     }
   }
@@ -230,12 +244,14 @@
     }
     var shotTimerGiant = 0;
     function giantShoots(){
+
       if (shotTimerGiant < game.time.now) {
         shotTimerGiant = game.time.now + 3000;
         var fireball;
         if (facingGiant == 'right') {
           fireball = fireballs.create(giant.body.x + giant.body.width / 2 + 45, giant.body.y + giant.body.height / 2 + 5, 'fireball');
         } else {
+        fireBallSound.play();
         fireball = fireballs.create(giant.body.x + giant.body.width / 2 - 40, giant.body.y + giant.body.height / 2 + 5, 'fireball');
         }
         game.physics.enable(fireball, Phaser.Physics.ARCADE);
@@ -246,8 +262,10 @@
         fireball.anchor.setTo(0.5, 0.5);
         fireball.body.velocity.x = 0;
         if (facingGiant == 'right'){
+          fireBallSound.play();
           fireball.body.velocity.x = 200;
         } else {
+          fireBallSound.play();
         fireball.body.velocity.x = -200;
       }
     }
@@ -256,6 +274,7 @@
   function hitGiant (player, enemy) {
     if(player.body.touching.down && enemy.body.touching.up){
       giantHP -= 25;
+      bossKilled.play();
       player.body.velocity.y = -150;
 
     }else{

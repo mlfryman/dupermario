@@ -37,6 +37,10 @@
 
     // audio
     game.load.audio('splash', '/assets/splash.mp3');
+    game.load.audio('jump', '/assets/mario-woohoo.WAV');
+    game.load.audio('fireball', '/assets/Cannon Shot.wav');
+    game.load.audio('bossdead', '/assets/Fireball.wav');
+    game.load.audio('swim','/assets/water.WAV')
     game.load.audio('coin', ['/assets/audio/sonic_ring.wav', '/assets/audio/sonic_ring.wav']);
     game.load.audio('level1Music', '/assets/audio/level-one-theme.ogg');
     game.load.audio('level2Music', '/assets/audio/level-two-theme.ogg');
