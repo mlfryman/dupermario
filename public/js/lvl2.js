@@ -1,22 +1,22 @@
 (function(){
   game.state.add('lvl2', {create:create, update:update});
 
-  //variables are declared here
+  // variables are declared here
 
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
-    level2music = game.add.audio('level2Music', 1, true);
-    level2music.play();
+    level2Music = game.add.audio('level2Music', 1, true);
+    level2Music.play();
 
     // game.add.tileSprite(0,0, 'bg2');
     // game.add.tileSprite(0, 0, 800, 600, 'bg2');
 
     map = game.add.tilemap('level2');
     map.addTilesetImage('platformer_tiles');
-    //reset score and time
+    // reset score and time
     layer = map.createLayer('world2');
     layer = map.createLayer(0);
     layer.resizeWorld();
@@ -25,7 +25,7 @@
     map.setCollisionBetween(105, 107);
     map.setCollision(79);
 
-    //coins
+    // coins
     coins = game.add.group();
     coins.enableBody = true;
     coins.physicsBodyType = Phaser.Physics.ARCADE;
