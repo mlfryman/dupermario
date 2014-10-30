@@ -5,7 +5,12 @@
 
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
+
     coinSound = game.add.audio('coin');
+    splashSound = game.add.audio('splash');
+    level2music = game.add.audio('level2Music', 1, true);
+    level2music.play();
+
     // game.add.tileSprite(0,0, 'bg2');
     // game.add.tileSprite(0, 0, 800, 600, 'bg2');
 
@@ -78,9 +83,10 @@
     //input controls
     movePlayer();
 
-    if(player.body.y < 80){
+    if(player.body.y <= 50){
       movePlayer();
     }else{
+      splashSound.play();
       moverUnderwater();
     }
     // goombas.forEachAlive(moveEnemies, this);
@@ -148,21 +154,35 @@
   function moverUnderwater(){
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
-    player.body.angularVelocity = 0;
 
-    if (cursors.left.isDown)
-    {
-        player.body.angularVelocity = -100;
-    }
-    else if (cursors.right.isDown)
-    {
-        player.body.angularVelocity = 100;
-    }
 
     if (cursors.up.isDown)
     {
-        game.physics.arcade.velocityFromAngle(player.angle, 300, player.body.velocity);
+        player.body.velocity.y = -250;
+        // particleBurst();
     }
+    else if (cursors.down.isDown)
+    {
+        player.body.velocity.y = 100;
+        // particleBurst();
+    }
+
+    if (cursors.left.isDown)
+    {
+        player.body.velocity.x = -100;
+        // player.scale.x = -1;
+        player.animations.play('left');
+
+        // particleBurst();
+    }
+    else if (cursors.right.isDown)
+    {
+        player.body.velocity.x = 100;
+        // player.scale.x = 1;
+        player.animations.play('right');
+        // particleBurst();
+    }
+
   }
 
 })();

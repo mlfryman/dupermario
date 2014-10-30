@@ -1,22 +1,25 @@
 (function(){
   game.state.add('lvl1', {create:create, update:update});
 
-  var positions = [{x:243, y:100}];
+  var positions = [{x:243, y:100},
+                   {x:1253, y:192},
+                   {x:1920, y:184}];
   function create(){
-
+    bumpers = game.add.group();
+    bumpers.enableBody = true;
+    bumpers.createMultiple(20, 'bumper');
+    bumper = bumpers.getFirstDead();
+    bumper.reset(1826, 184);
+    bumper.body.immovable = true;
     coinSound = game.add.audio('coin');
-    level1music = game.add.audio('level1Music', 1, true);
-    level1music.play();
+    level1Music = game.add.audio('level1Music', 1, true);
+    level1Music.play();
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
-
     layer = map.createLayer('World1');
-
-    layer = map.createLayer(0);
     layer.resizeWorld();
-
     map.setCollisionBetween(14, 16);
     map.setCollisionBetween(21, 22);
     map.setCollisionBetween(27, 28);
@@ -24,8 +27,6 @@
 
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
-    //  We need to enable physics on the player
-
 
     //coins
     coins = game.add.group();
@@ -62,19 +63,16 @@
     goombas.enableBody = true;
     goombas.physicsBodyType = Phaser.Physics.ARCADE;
     positions.forEach(function(p){
-      var goomba = goombas.create(p.x, p.y, 'goomba');
+      goomba = goombas.create(p.x, p.y, 'goomba');
       goomba.anchor.setTo(0.5, 0.5);
       goomba.scale.x = 0.5;
       goomba.scale.y = 0.5;
       goomba.body.gravity.y = 900;
-      //goomba.body.setSize(32, 50, 0, 5);
       goomba.animations.add('left', [0, 1], 4, true);
       goomba.animations.play('left');
       goomba.body.velocity.x = -100;
-      goomba.bounceLeft = 144.25;
-      goomba.bounceRight = 431.75;
+      goomba.body.bounce.x = 1;
     }, this);
-
 
     cursors = game.input.keyboard.createCursorKeys();
 
@@ -84,11 +82,11 @@
 
     time = 0;
     timer = game.time.events.loop(1000, addTime);
-    txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtTime = game.add.text(20, 30, 'Time: 0', {font: "10px press_start_kregular", fill: "#FCFCFC"});
     txtTime.fixedToCamera = true  ;
 
     score = 0;
-    txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtScore = game.add.text(20, 10, 'Score: 0', {font: "10px press_start_kregular", fill: "#FCFCFC"});
     txtScore.fixedToCamera = true  ;
 
     spawnGiant();
@@ -102,6 +100,7 @@
     game.physics.arcade.collide(giant, layer);
     game.physics.arcade.collide(player, layer);
     game.physics.arcade.collide(goombas, layer);
+    game.physics.arcade.collide(goombas, bumpers);
     game.physics.arcade.collide(coins, layer);
     game.physics.arcade.overlap(player, goombas, bop, null, this);
     game.physics.arcade.overlap(player, giant, hitGiant, null, this);
@@ -120,14 +119,15 @@
     if (giant.alive == true){
     giantShoots();
   }
+
 if (giantHP <= 0 ) {
     giant.kill();
-    setTimeout(function() {game.state.start('lvl2');}, 10000);
+    level1Music.stop();
+    setTimeout(function() {game.state.start('lvl2');}, 3000);
 }
 
     //input controls
     movePlayer();
-    goombas.forEachAlive(moveEnemies, this);
     if(player.alive == false){
       killPlayer();
     };
@@ -135,7 +135,7 @@ if (giantHP <= 0 ) {
 
 
   function killPlayer(){
-    level1music.stop()
+    level1Music.stop()
     alert('you dun goofed');
     game.state.start('menu');
   }
@@ -172,19 +172,10 @@ if (giantHP <= 0 ) {
       killPlayer();
     }
   }
-  function moveEnemies(g){
-    if(g.x===g.bounceLeft){
-      g.body.velocity.x = 100;
-    }else if(g.x===g.bounceRight){
-      g.body.velocity.x = -100;
-    }
-  }
-
   function addTime(){
     time ++
     txtTime.text = 'Time: ' + time;
   }
-
   function collectCoin(player, coin){
     coin.kill();
     score += 10;
@@ -235,7 +226,7 @@ if (giantHP <= 0 ) {
         fireball.body.velocity.x = 0;
         if (facingGiant == 'right'){
           fireball.body.velocity.x = 200;
-      } else {
+        } else {
         fireball.body.velocity.x = -200;
       }
     }
@@ -243,8 +234,9 @@ if (giantHP <= 0 ) {
 
   function hitGiant (player, enemy) {
     if(player.body.touching.down && enemy.body.touching.up){
-      giantHP -= 100
-      player.body.bounce.y = .7;
+      giantHP -= 25;
+      player.body.velocity.y = -150;
+
     }else{
       killPlayer();
     }
