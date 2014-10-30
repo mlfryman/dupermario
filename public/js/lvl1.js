@@ -122,7 +122,7 @@
 if (giantHP <= 0 ) {
     giant.kill();
     level1Music.stop();
-    setTimeout(function() {game.state.start('lvl2');}, 3000);
+    setTimeout(function() {game.state.start('win1');}, 3000);
 }
 
     //input controls

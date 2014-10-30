@@ -7,7 +7,7 @@
     var title2 = game.add.text(400, 75, 'Woooooo Hooooooo!', {font: "65px super_plumber_brothersregular", fill: "#FCFCFC", align: "center" });
     title2. anchor.setTo(0.5);
 
-    txt2 = game.add.text(100, game.world.centerY + 20, 'Level 2 Complete!', {font: "16px press_start_kregular", fill: "#FCFCFC", align: "center"});
+    txt2 = game.add.text(400, game.world.centerY + 20, 'Level 2 Complete!', {font: "16px press_start_kregular", fill: "#FCFCFC", align: "center"});
     txt2.fixedToCamera = true  ;
 
     var instructions2 = game.add.text(400, game.world.centerY + 70, 'Press SPACE to return to MENU', {font: "14px press_start_kregular", fill: "#FCFCFC", align: "center" });

@@ -29,13 +29,12 @@
     game.load.audio('level1Music', '/assets/audio/level-one-theme.ogg');
     game.load.audio('level2Music', '/assets/audio/level-one-theme.ogg');
 
-
   }
 
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    //add tile sprite background here
+    // add tile sprite background here
     game.add.tileSprite(0, 0, 800, 600, 'bg');
 
     var title = game.add.text(400, 75, 'Duper Mario!', {font: "65px super_plumber_brothersregular", fill: "#C64C1D", align: "center" });
@@ -49,7 +48,7 @@
   }
 
   function start(){
-    // MLF NOTE: temporarily changed $ start('menu') to gameover to degub
+    // MLF NOTE: temporarily changed $ start('menu') to gameover to debug
     game.state.start('lvl1');
   }
 
