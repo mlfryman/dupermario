@@ -30,8 +30,10 @@
     bumper.body.immovable = true;
 
     fireBallSound = game.add.audio('fireball', 0.5);
-    jumpSound     = game.add.audio('jump', 0.3);
+    jumpSound     = game.add.audio('jump', 0.8);
     coinSound     = game.add.audio('coin', 0.5);
+    haha          = game.add.audio('haha', 0.5);
+    pain          = game.add.audio('pain', 0.5);
     bossKilled    = game.add.audio('bossdead', 0.5);
 
     level1Music = game.add.audio('level1Music', 1, true);
@@ -198,8 +200,10 @@
   function bop(player, enemy){
     if(player.body.touching.down && enemy.body.touching.up){
       enemy.kill();
+      haha.play();
       player.body.velocity.y = -100;
     }else{
+      pain.play();
       killPlayer();
     }
   }

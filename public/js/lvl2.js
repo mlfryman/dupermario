@@ -16,12 +16,11 @@
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
     swim        = game.add.audio('swim', 1);
+    jumpSound     = game.add.audio('jump', 0.8);
+    pain          = game.add.audio('pain', 0.5);
     victory     = game.add.audio('victory', 1);
     level2Music = game.add.audio('level2Music', 1, true);
     level2Music.play();
-
-    // game.add.tileSprite(0,0, 'bg2');
-    // game.add.tileSprite(0, 0, 800, 600, 'bg2');
 
     map = game.add.tilemap('level2');
     map.addTilesetImage('platformer_tiles');
@@ -165,6 +164,7 @@
     }
     //  Allow the player to jump if they are touching the ground.
     if (cursors.up.isDown && player.body.onFloor()){
+      jumpSound.play();
       player.body.velocity.y = -200;
     }
 
