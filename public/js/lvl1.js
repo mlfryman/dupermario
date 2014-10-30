@@ -89,6 +89,9 @@
     txtScore.fixedToCamera = true  ;
 
     spawnGiant();
+
+    fireballs = game.add.group();
+    game.physics.enable(fireballs, Phaser.Physics.ARCADE);
   };
 
   function update(){
@@ -98,7 +101,24 @@
     game.physics.arcade.collide(goombas, layer);
     game.physics.arcade.collide(coins, layer);
     game.physics.arcade.overlap(player, goombas, bop, null, this);
+    game.physics.arcade.overlap(player, giant, bop, null, this);
     game.physics.arcade.overlap(player, coins, collectCoin);
+    game.physics.arcade.collide(fireballs, layer);
+    game.physics.arcade.collide(fireballs, player, killPlayer, null, this);
+
+    //giant boss path
+    pathCounter +=1;
+    if (pathCounter >= 140){
+      pathCounter = 0;
+    }
+
+    giantPath();
+
+    if (giant.alive == true){
+    giantShoots();
+  }
+
+
     //input controls
     movePlayer();
     goombas.forEachAlive(moveEnemies, this);
@@ -106,6 +126,7 @@
       killPlayer();
     };
   };
+
 
   function killPlayer(){
     alert('you dun goofed');
@@ -166,7 +187,7 @@
 
   var giantHP = 100;
   function spawnGiant() {
-    giant = game.add.sprite(2900, 50, 'giant_mario');
+    giant = game.add.sprite(2970, 50, 'giant_mario');
     game.physics.enable(giant, Phaser.Physics.ARCADE);
     giant.body.gravity.y=500;
     giant.body.collideWorldBounds = true;
@@ -174,6 +195,42 @@
     giant.frame = 1;
     giant.animations.add('walking_left', [0,1,2], 6, true);
     giant.animations.add('walking_right', [3,4,5], 6, true);
-    giant.Text = game.add.text(giant.body.x, giant.body.y - 30, giantHP);
+    //giant.Text = game.add.text(giant.body.x, giant.body.y - 30, giantHP);
+  }
+
+  var pathCounter = 0;
+  function giantPath(){
+    if (pathCounter < 70) {
+    giant.animations.play('walking_left');
+    giant.body.velocity.x = - 50;
+    facingGiant = 'left';
+  } else {
+    giant.animations.play('walking_right');
+    giant.body.velocity.x = 50;
+    facingGiant = 'right';
+      }
+    }
+    var shotTimerGiant = 0;
+    function giantShoots(){
+      if (shotTimerGiant < game.time.now) {
+        shotTimerGiant = game.time.now + 3000;
+        var fireball;
+        if (facingGiant == 'right') {
+          fireball = fireballs.create(giant.body.x + giant.body.width / 2 + 45, giant.body.y + giant.body.height / 2 + 5, 'fireball');
+        } else {
+        fireball = fireballs.create(giant.body.x + giant.body.width / 2 - 40, giant.body.y + giant.body.height / 2 + 5, 'fireball');
+        }
+        game.physics.enable(fireball, Phaser.Physics.ARCADE);
+        fireball.body.gravity.y = 500;
+        fireball.body.bounce.y = 1;
+        fireball.outOfBoundsKill = true;
+        fireball.anchor.setTo(0.5, 0.5);
+        fireball.body.velocity.x = 0;
+        if (facingGiant == 'right'){
+          fireball.body.velocity.x = 200;
+      } else {
+        fireball.body.velocity.x = -200;
+      }
+    }
   }
 })();
