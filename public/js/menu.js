@@ -15,6 +15,7 @@
     game.load.audio('coin', '/assets/sonic_ring.wav');
     game.load.audio('splash', '/assets/splash.mp3');
     game.load.audio('level1Music', '/assets/level-one-theme.ogg');
+    game.load.audio('level2Music', '/assets/level-two-theme.ogg');
 
     game.load.tilemap('level2', 'assets/platform.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('platformer_tiles', '/assets/platformer_tiles.png');

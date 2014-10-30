@@ -8,6 +8,8 @@
 
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
+    level2music = game.add.audio('level2Music', 1, true);
+    level2music.play();
 
     // game.add.tileSprite(0,0, 'bg2');
     // game.add.tileSprite(0, 0, 800, 600, 'bg2');
