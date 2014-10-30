@@ -5,6 +5,9 @@
   function create(){
 
     coinSound = game.add.audio('coin');
+    level1music = game.add.audio('level1Music', 1, true);
+    level1music.play();
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
     map.addTilesetImage('SuperMarioBros-World1-1');
@@ -28,10 +31,10 @@
     coins = game.add.group();
     coins.enableBody = true;
     coins.physicsBodyType = Phaser.Physics.ARCADE;
-    for(var i = 0; i < 40; i++){
-      coins.create(game.world.randomX, 30, 'coin', 0);
+    for(var i = 0; i < 100; i++){
+      coins.create(game.world.randomX, 50 * Math.random(), 'coin', 0);
     };
-    coins.setAll('body.gravity.y', 100);
+    coins.setAll('body.gravity.y', 100 * Math.random() + 50);
     coins.setAll('body.bounce.y', 1);
     coins.setAll('scale.x', 0.5);
     coins.setAll('scale.y', 0.5);
@@ -105,6 +108,7 @@
   };
 
   function killPlayer(){
+    level1music.stop()
     alert('you dun goofed');
     game.state.start('menu');
   }
