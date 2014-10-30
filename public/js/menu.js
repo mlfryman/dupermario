@@ -1,10 +1,10 @@
 (function(){
-  game.state.add('menu', {preload:preload, create:create});
+  game.state.add('menu', {preload:preload, create:create, update:update, render:render });
 
   function preload(){
     /* NOTE: load ALL game assets here */
     // images
-    game.load.image('bg', '/assets/background.png');
+    game.load.image('bg', '/assets/menu-bg.png');
     game.load.image('bumper', '/assets/bumper.png');
     game.load.image('gold', '/assets/particles/gold.png');
     game.load.image('star-part', '/assets/particles/star_particle.png');
@@ -38,22 +38,72 @@
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    // add tile sprite background here
-    game.add.tileSprite(0, 0, 800, 600, 'bg');
+    game.add.sprite(0, 0, 'bg');
 
     var title = game.add.text(400, 75, 'Duper Mario!', {font: "65px super_plumber_brothersregular", fill: "#C64C1D", align: "center" });
-    title. anchor.setTo(0.5);
+    title.anchor.setTo(0.5);
 
     var instructions = game.add.text(400, game.world.centerY + 20, 'Press SPACE to play', {font: "15px press_start_kregular", fill: "#FCFCFC", align: "center" });
     instructions.anchor.setTo(0.5);
 
     var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     spaceKey.onDown.add(start);
-  }
+    cursors = game.input.keyboard.createCursorKeys();
 
+    bumper = game.add.sprite(0, 206, 'bumper');
+    game.physics.arcade.enable(bumper);
+    bumper.body.immovable = true;
+    bumper.scale.x = 50;
+    bumper.scale.y = 3;
+    game.debug.body(bumper);
+    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    //  We need to enable physics on the player
+    game.physics.arcade.enable(player);
+
+    //  Player physics properties. Give the little guy a slight bounce.
+    player.anchor.setTo(0.5, 0.5);
+    player.body.bounce.y = 0.2;
+    player.body.gravity.y = 300;
+    player.checkWorldBounds = true;
+    player.body.collideWorldBounds = true;
+    game.camera.follow(player);
+    //  Our two animations, walking left and right.
+    player.animations.add('left', [0, 1, 2, 3], 10, true);
+    player.animations.add('right', [5, 6, 7, 8], 10, true);
+  }
+  function update(){
+    movePlayer();
+    game.physics.arcade.collide(player, bumper);
+  }
   function start(){
     // MLF NOTE: temporarily changed $ start('menu') to gameover to debug
     game.state.start('win2');
   }
+function movePlayer(){
+  //Reset the players velocity (movement)
+  player.body.velocity.x = 0;
 
+  if (cursors.left.isDown)
+  {
+      //  Move to the left
+    player.body.velocity.x = -150;
+    player.animations.play('left');
+  }else if (cursors.right.isDown){
+      //  Move to the right
+    player.body.velocity.x = 150;
+    player.animations.play('right');
+  }else{
+    //  Stand still
+    player.animations.stop();
+    player.frame = 4;
+  }
+  //  Allow the player to jump if they are touching the ground.
+  if (cursors.up.isDown && player.body.onFloor()){
+    player.body.velocity.y = -200;
+  }
+
+}
+function render(){
+  game.debug.body(bumper);
+}
 })();
