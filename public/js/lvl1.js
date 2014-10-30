@@ -121,6 +121,7 @@
   }
 if (giantHP <= 0 ) {
     giant.kill();
+    level1Music.stop();
     setTimeout(function() {game.state.start('lvl2');}, 3000);
 }
 
@@ -133,7 +134,7 @@ if (giantHP <= 0 ) {
 
 
   function killPlayer(){
-    level1music.stop()
+    level1Music.stop()
     alert('you dun goofed');
     game.state.start('menu');
   }
