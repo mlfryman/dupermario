@@ -1,22 +1,22 @@
 (function(){
   game.state.add('lvl2', {create:create, update:update});
 
-  //variables are declared here
+  // variables are declared here
 
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     coinSound = game.add.audio('coin');
     splashSound = game.add.audio('splash');
-    level2music = game.add.audio('level2Music', 1, true);
-    level2music.play();
+    level2Music = game.add.audio('level2Music', 1, true);
+    level2Music.play();
 
     // game.add.tileSprite(0,0, 'bg2');
     // game.add.tileSprite(0, 0, 800, 600, 'bg2');
 
     map = game.add.tilemap('level2');
     map.addTilesetImage('platformer_tiles');
-    //reset score and time
+    // reset score and time
     layer = map.createLayer('world2');
     layer = map.createLayer(0);
     layer.resizeWorld();
@@ -27,7 +27,7 @@
     map.setCollisionBetween(105, 107);
     map.setCollision(79);
 
-    //coins
+    // coins
     coins = game.add.group();
     coins.enableBody = true;
     coins.physicsBodyType = Phaser.Physics.ARCADE;
@@ -35,6 +35,7 @@
       coins.create(game.world.randomX, game.world.randomY, 'coin', 0);
       // coins.create(game.world.randomY, 100, 'coin', 0);
     };
+
     coins.setAll('body.gravity.y', 100);
     coins.setAll('body.bounce.y', 1);
     coins.setAll('scale.x', 0.5);
@@ -62,14 +63,12 @@
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     cursors = game.input.keyboard.createCursorKeys();
 
-    layer.debug = true
     time = 0;
     timer = game.time.events.loop(1000, addTime);
-    txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtTime = game.add.text(20, 30, 'Time: ' + time, {font: "20px Arial", fill: "#ffffff"});
     txtTime.fixedToCamera = true  ;
 
-    score = 0;
-    txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtScore = game.add.text(20, 10, 'Score: ' + score, {font: "20px Arial", fill: "#ffffff"});
     txtScore.fixedToCamera = true  ;
 
     //timers

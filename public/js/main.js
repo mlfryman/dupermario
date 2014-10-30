@@ -8,8 +8,8 @@ var level1Music, level2Music,
     coinSound;
 
 /* TIME & SCORE */
-var score, txtScore,
-    time, timer, txtTime;
+var score = 0, txtScore,
+    time = 0, timer, txtTime;
 
 /* COLLECTABLES */
 

@@ -29,7 +29,7 @@
     map.setCollision(40);
 
     // The player and its settings
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    player = game.add.sprite(2100, game.world.height - 150, 'dude');
 
     //coins
     coins = game.add.group();
@@ -122,11 +122,12 @@
     if (giant.alive == true){
     giantShoots();
   }
-if (giantHP <= 0 ) {
+  if (giantHP <= 0 ) {
     giant.kill();
     level1Music.stop();
-    setTimeout(function() {game.state.start('lvl2');}, 3000);
-}
+    setTimeout(function() {
+      game.state.start('win1');}, 3000);
+  }
 
     //input controls
     movePlayer();
@@ -139,7 +140,7 @@ if (giantHP <= 0 ) {
   function killPlayer(){
     level1Music.stop()
     alert('you dun goofed');
-    game.state.start('menu');
+    game.state.start('gameover');
   }
 
   function movePlayer(){
