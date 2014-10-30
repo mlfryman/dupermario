@@ -1,3 +1,19 @@
 var game = new Phaser.Game(800, 240, Phaser.CANVAS, 'duper-mario');
-var map, layer, player, score, txtScore, time, timer, txtTime, coin, coins, coinSound, goombas;
-var level1music;
+
+/*  MISC VARS  */
+var map, layer, player;
+
+/* AUDIO */
+var level1Music, level2Music,
+    coinSound;
+
+/* TIME & SCORE */
+var score, txtScore,
+    time, timer, txtTime;
+
+/* COLLECTABLES */
+
+var coin, coins;
+
+/* BADDIES */
+var goombas;

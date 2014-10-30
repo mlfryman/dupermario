@@ -5,8 +5,8 @@
   function create(){
 
     coinSound = game.add.audio('coin');
-    level1music = game.add.audio('level1Music', 1, true);
-    level1music.play();
+    level1Music = game.add.audio('level1Music', 1, true);
+    level1Music.play();
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
