@@ -62,13 +62,11 @@
     cursors = game.input.keyboard.createCursorKeys();
 
     // layer.debug = true
-    time = 0;
     timer = game.time.events.loop(1000, addTime);
-    txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtTime = game.add.text(20, 30, 'Time: ' + time, {font: "20px Arial", fill: "#ffffff"});
     txtTime.fixedToCamera = true  ;
 
-    score = 0;
-    txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtScore = game.add.text(20, 10, 'Score: ' + score, {font: "20px Arial", fill: "#ffffff"});
     txtScore.fixedToCamera = true  ;
 
     //timers
@@ -78,7 +76,7 @@
     //physics collisions declared here
     game.physics.arcade.collide(player, layer);
     // game.physics.arcade.collide(goombas, layer);
-    game.physics.arcade.collide(coins2, layer);
+    game.physics.arcade.collide(coins, layer);
     // game.physics.arcade.overlap(player, goombas, bop, null, this);
     game.physics.arcade.overlap(player, coins, collectCoin);
     //input controls

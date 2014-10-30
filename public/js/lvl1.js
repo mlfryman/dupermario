@@ -26,7 +26,7 @@
     map.setCollision(40);
 
     // The player and its settings
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    player = game.add.sprite(2100, game.world.height - 150, 'dude');
 
     //coins
     coins = game.add.group();
@@ -123,7 +123,7 @@
     giant.kill();
     level1Music.stop();
     setTimeout(function() {
-      game.state.start('lvl2');}, 3000);
+      game.state.start('win1');}, 3000);
   }
 
     //input controls
