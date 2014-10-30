@@ -13,7 +13,7 @@ var score = 0, txtScore,
 
 /* COLLECTABLES */
 
-var coin, coins;
+var coin, coins, trophy;
 
 /* BADDIES */
 var goombas;

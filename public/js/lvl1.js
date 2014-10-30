@@ -20,13 +20,16 @@
     map.addTilesetImage('SuperMarioBros-World1-1');
     layer = map.createLayer('World1');
     layer.resizeWorld();
+
+    layer.debug = true
+
     map.setCollisionBetween(14, 16);
     map.setCollisionBetween(21, 22);
     map.setCollisionBetween(27, 28);
     map.setCollision(40);
 
     // The player and its settings
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    player = game.add.sprite(2100, game.world.height - 150, 'dude');
 
     //coins
     coins = game.add.group();
@@ -120,11 +123,12 @@
     giantShoots();
   }
 
-if (giantHP <= 0 ) {
+  if (giantHP <= 0 ) {
     giant.kill();
     level1Music.stop();
-    setTimeout(function() {game.state.start('lvl2');}, 3000);
-}
+    setTimeout(function() {
+      game.state.start('win1');}, 3000);
+  }
 
     //input controls
     movePlayer();
