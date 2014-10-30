@@ -127,6 +127,7 @@
     if (giant.alive == true){
     giantShoots();
   }
+
   if (giantHP <= 0 ) {
     giant.kill();
     level1Music.stop();
@@ -250,6 +251,7 @@
       giantHP -= 25;
       bossKilled.play();
       player.body.velocity.y = -150;
+
     }else{
       killPlayer();
     }

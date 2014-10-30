@@ -35,6 +35,7 @@
     for(var i = 0; i < 50; i++){
       coins.create(game.world.randomX, game.world.randomY, 'coin', 0);
       // coins.create(game.world.randomY, 100, 'coin', 0);
+
     };
 
     coins.setAll('body.gravity.y', 100);
@@ -45,9 +46,18 @@
     coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
     coins.callAll('animations.play', 'animations', 'spin');
 
+          //trophy to end lvl2
+    trophy = game.add.sprite(3242 , 216, 'trophy');
+    trophy.anchor.setTo(1, 1);
+    game.physics.arcade.enable(trophy);
+    trophy.physicsBodyType = Phaser.Physics.ARCADE;
+    trophy.scale.setTo(0.2,0.2);
+
+    trophy.body.gravity.y = 100;
+    //trophy.body.bounce.y = .2;
 
     // The player and its settings
-    player = game.add.sprite(32, game.world.height - 450, 'dude');
+    player = game.add.sprite(3089, 226, 'dude');
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
@@ -82,6 +92,9 @@
     game.physics.arcade.collide(coins, layer);
     // game.physics.arcade.overlap(player, goombas, bop, null, this);
     game.physics.arcade.overlap(player, coins, collectCoin);
+    //trophy collide
+    game.physics.arcade.collide(trophy, layer);
+    game.physics.arcade.overlap(player, trophy, collectTrophy);
     //input controls
     movePlayer();
 
@@ -155,6 +168,14 @@
     coinSound.play();
   }
 
+function collectTrophy(player, trophy){
+  trophy.kill();
+  score += 100;
+  txtScore.text = 'Score: ' + score;
+  coinSound.play();
+setTimeout(function() {
+  game.state.start('win2');}, 3000);
+}
   function moverUnderwater(){
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
@@ -194,5 +215,4 @@
     }
 
   }
-
 })();
