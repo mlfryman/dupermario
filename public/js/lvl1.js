@@ -5,8 +5,8 @@
   function create(){
 
     coinSound = game.add.audio('coin');
-    level1music = game.add.audio('level1Music', 1, true);
-    level1music.play();
+    level1Music = game.add.audio('level1Music', 1, true);
+    level1Music.play();
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
@@ -84,11 +84,11 @@
 
     time = 0;
     timer = game.time.events.loop(1000, addTime);
-    txtTime = game.add.text(20, 30, 'Time: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtTime = game.add.text(20, 30, 'Time: 0', {font: "10px press_start_kregular", fill: "#FCFCFC"});
     txtTime.fixedToCamera = true  ;
 
     score = 0;
-    txtScore = game.add.text(20, 10, 'Score: 0', {font: "20px Arial", fill: "#ffffff"});
+    txtScore = game.add.text(20, 10, 'Score: 0', {font: "10px press_start_kregular", fill: "#FCFCFC"});
     txtScore.fixedToCamera = true  ;
   };
 
