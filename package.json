@@ -1,9 +1,9 @@
 {
-  "name": "simple-server",
+  "name": "mlf-duper-mario",
   "version": "1.0.0",
-  "description": "Simple HTTP Web Server",
+  "description": "Super Mario Knockoff - Phaser",
   "main": "app.js",
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Melanie Fryman <melanie@frymanet.com>",
   "license": "MIT",
   "dependencies": {
     "connect": "^3.3.0",
