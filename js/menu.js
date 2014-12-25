@@ -11,8 +11,8 @@
     game.load.image('diamond',    'assets/img/particles/diamond.png');
     game.load.image('1up',        'assets/img/particles/1up.png');
     game.load.image('star',       'assets/img/particles/star.png');
-    game.load.image('fireball',   'assets/fireball.png ');
-    game.load.image('trophy',     'assets/trophy.png ');
+    game.load.image('fireball',   'assets/img/fireball.png ');
+    game.load.image('trophy',     'assets/img/trophy.png ');
 
     // spritesheets
     game.load.spritesheet('dude',        'assets/img/dude.png', 32, 48);
@@ -42,7 +42,6 @@
     game.load.audio('level2Music',  'assets/audio/level-two-theme.ogg');
     game.load.audio('gameOver',     'assets/audio/game-over.ogg');
     game.load.audio('victory',      'assets/audio/victory.ogg');
-
   }
 
   function create(){
