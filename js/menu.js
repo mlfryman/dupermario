@@ -4,44 +4,44 @@
   function preload(){
     /* NOTE: load ALL game assets here */
     // images
-    game.load.image('bg',         '/assets/img/menu-bg.png');
-    game.load.image('bumper',     '/assets/img/bumper.png');
-    game.load.image('gold',       '/assets/img/particles/gold.png');
-    game.load.image('star-part',  '/assets/img/particles/star_particle.png');
-    game.load.image('diamond',    '/assets/img/particles/diamond.png');
-    game.load.image('1up',        '/assets/img/particles/1up.png');
-    game.load.image('star',       '/assets/img/particles/star.png');
-    game.load.image('fireball',   '/assets/fireball.png ');
-    game.load.image('trophy',     '/assets/trophy.png ');
+    game.load.image('bg',         'assets/img/menu-bg.png');
+    game.load.image('bumper',     'assets/img/bumper.png');
+    game.load.image('gold',       'assets/img/particles/gold.png');
+    game.load.image('star-part',  'assets/img/particles/star_particle.png');
+    game.load.image('diamond',    'assets/img/particles/diamond.png');
+    game.load.image('1up',        'assets/img/particles/1up.png');
+    game.load.image('star',       'assets/img/particles/star.png');
+    game.load.image('fireball',   'assets/fireball.png ');
+    game.load.image('trophy',     'assets/trophy.png ');
 
     // spritesheets
-    game.load.spritesheet('dude',        '/assets/img/dude.png', 32, 48);
-    game.load.spritesheet('coin',        '/assets/img/coin.png', 32, 32);
-    game.load.spritesheet('giant_mario', '/assets/img/giantMario.png', 88.6666, 124);
+    game.load.spritesheet('dude',        'assets/img/dude.png', 32, 48);
+    game.load.spritesheet('coin',        'assets/img/coin.png', 32, 32);
+    game.load.spritesheet('giant_mario', 'assets/img/giantMario.png', 88.6666, 124);
     game.load.spritesheet('blooper',     'assets/img/enemy/blooper-sprite.png', 32, 48);
-    game.load.atlas('goomba',            '/assets/img/enemy/goomba.png', '/assets/img/enemy/goomba.json');
+    game.load.atlas('goomba',            'assets/img/enemy/goomba.png', 'assets/img/enemy/goomba.json');
 
     // tiles & tile maps
     game.load.tilemap('level1',                 'assets/img/tiles/super_mario.json', null, Phaser.Tilemap.TILED_JSON);
     // gameover uses the same tile sheet as level 1
     game.load.tilemap('gameover',               'assets/img/tiles/gameover.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('SuperMarioBros-World1-1',  '/assets/img/tiles/super_mario.png');
+    game.load.image('SuperMarioBros-World1-1',  'assets/img/tiles/super_mario.png');
     game.load.tilemap('level2',                 'assets/img/tiles/platform.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('platformer_tiles',         '/assets/img/tiles/platformer_tiles.png');
+    game.load.image('platformer_tiles',         'assets/img/tiles/platformer_tiles.png');
 
     // audio
-    game.load.audio('splash',       '/assets/audio/splash.ogg');
-    game.load.audio('jump',         '/assets/audio/mario-woohoo.ogg');
-    game.load.audio('fireball',     '/assets/audio/cannon-shot.ogg');
-    game.load.audio('bossdead',     '/assets/audio/fireball.ogg');
-    game.load.audio('swim',         '/assets/audio/water.ogg');
-    game.load.audio('haha',         '/assets/audio/mario-haha.ogg');
-    game.load.audio('pain',         '/assets/audio/mario-pain.ogg');
-    game.load.audio('coin',         '/assets/audio/sonic_ring.ogg');
-    game.load.audio('level1Music',  '/assets/audio/level-one-theme.ogg');
-    game.load.audio('level2Music',  '/assets/audio/level-two-theme.ogg');
-    game.load.audio('gameOver',     '/assets/audio/game-over.ogg');
-    game.load.audio('victory',      '/assets/audio/victory.ogg');
+    game.load.audio('splash',       'assets/audio/splash.ogg');
+    game.load.audio('jump',         'assets/audio/mario-woohoo.ogg');
+    game.load.audio('fireball',     'assets/audio/cannon-shot.ogg');
+    game.load.audio('bossdead',     'assets/audio/fireball.ogg');
+    game.load.audio('swim',         'assets/audio/water.ogg');
+    game.load.audio('haha',         'assets/audio/mario-haha.ogg');
+    game.load.audio('pain',         'assets/audio/mario-pain.ogg');
+    game.load.audio('coin',         'assets/audio/sonic_ring.ogg');
+    game.load.audio('level1Music',  'assets/audio/level-one-theme.ogg');
+    game.load.audio('level2Music',  'assets/audio/level-two-theme.ogg');
+    game.load.audio('gameOver',     'assets/audio/game-over.ogg');
+    game.load.audio('victory',      'assets/audio/victory.ogg');
 
   }
 
