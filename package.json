@@ -1,9 +1,9 @@
 {
-  "name": "mlf-duper-mario",
+  "name": "dupermario",
   "version": "1.0.0",
-  "description": "Super Mario Knockoff - Phaser",
+  "description": "Super Mario Knockoff",
   "main": "app.js",
-  "author": "Melanie Fryman <melanie@frymanet.com>",
+  "author": "Melanie L. Fryman <melanie@fryman.io>",
   "license": "MIT",
   "dependencies": {
     "connect": "^3.3.0",
