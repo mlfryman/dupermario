@@ -4,9 +4,9 @@ var game = new Phaser.Game(800, 240, Phaser.CANVAS, 'duper-mario');
 var map, layer, player;
 
 /* AUDIO */
-var level1Music, level2Music,
+var level1Music, level2Music, gameOver,
     coinSound, jumpSound, fireBallSound, bossKilled,
-    haha, pain, swim, gameOver, victory;
+    haha, pain, swim, victory;
 
 /* TIME & SCORE */
 var score = 0, txtScore,
@@ -17,4 +17,4 @@ var score = 0, txtScore,
 var coin, coins, trophy;
 
 /* BADDIES */
-var goombas;
+var goombas, bloopers;

@@ -23,8 +23,6 @@
       b.body.immovable = true;
     }, this);
 
-    coinSound = game.add.audio('coin');
-    gameOver = game.add.audio('gameOver');
     bumpers.createMultiple(20, 'bumper');
     bumper = bumpers.getFirstDead();
     bumper.reset(1826, 184);
@@ -36,6 +34,7 @@
     haha          = game.add.audio('haha', 0.5);
     pain          = game.add.audio('pain', 0.5);
     bossKilled    = game.add.audio('bossdead', 0.5);
+    gameOver      = game.add.audio('gameOver');
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     map = game.add.tilemap('level1');
@@ -63,7 +62,7 @@
     coins.setAll('scale.x', 0.5);
     coins.setAll('scale.y', 0.5);
     //make the coins spin
-    coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
+    coins.callAll('animations.add',  'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
     coins.callAll('animations.play', 'animations', 'spin');
 
     //-  Enable physics on the player

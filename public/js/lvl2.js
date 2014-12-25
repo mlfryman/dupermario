@@ -1,10 +1,10 @@
 (function(){
   game.state.add('lvl2', {create:create, update:update});
 
-  var positions = [{x:243, y:244, iT:220, fT:464},
-                   {x:928, y:178, iT:800, fT:977},
-                   {x:982, y:286, iT:864, fT:1136},
-                   {x:2950, y:93, iT:2673, fT:3166},
+  var positions = [{x:243,  y:244, iT:220,  fT:464},
+                   {x:928,  y:178, iT:800,  fT:977},
+                   {x:982,  y:286, iT:864,  fT:1136},
+                   {x:2950, y:93,  iT:2673, fT:3166},
                    {x:2833, y:257, iT:2640, fT:3136},
                    {x:3184, y:198, iT:3008, fT:3183},
                    {x:2495, y:295, iT:2352, fT:2656}];
@@ -12,17 +12,17 @@
   function create(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    gameOver = game.add.audio('gameOver');
-    coinSound = game.add.audio('coin');
-    splashSound = game.add.audio('splash');
-    swim        = game.add.audio('swim', 1);
+    gameOver      = game.add.audio('gameOver');
+    coinSound     = game.add.audio('coin');
+    splashSound   = game.add.audio('splash');
     jumpSound     = game.add.audio('jump', 0.8);
+    swim          = game.add.audio('swim', 1);
     pain          = game.add.audio('pain', 0.5);
-    victory     = game.add.audio('victory', 1);
-    level2Music = game.add.audio('level2Music', 1, true);
+    victory       = game.add.audio('victory', 1);
+    level2Music   = game.add.audio('level2Music', 1, true);
     level2Music.play();
 
-    map = game.add.tilemap('level2');
+    map   = game.add.tilemap('level2');
     map.addTilesetImage('platformer_tiles');
     //- reset score and time
     layer = map.createLayer('world2');

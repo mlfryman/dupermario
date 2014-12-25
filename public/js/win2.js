@@ -12,7 +12,7 @@
     emitter2.makeParticles(['diamond', 'star', 'star-part', '1up', 'gold']);
     emitter2.start(false, 4000, 100);
 
-    var title2 = game.add.text(400, 75, 'Woooooo Hooooooo!', {font: "65px super_plumber_brothersregular", fill: "#FCFCFC", align: "center" });
+    var title2  = game.add.text(400, 75, 'Woooooo Hooooooo!', {font: "65px super_plumber_brothersregular", fill: "#FCFCFC", align: "center" });
     title2. anchor.setTo(0.5);
 
     txt2 = game.add.text(400, game.world.centerY + 20, 'Level 2 Complete', {font: "18px press_start_kregular", fill: "#FCFCFC", align: "center"});
