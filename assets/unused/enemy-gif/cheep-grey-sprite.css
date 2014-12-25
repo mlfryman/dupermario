@@ -1,0 +1,8 @@
+.frame { 
+ background-color: transparent;
+ background-image: url(sprite-cheep-grey8d72c5f915dd3d84ec99f9f0479148a3.jpg);
+ background-repeat: no-repeat;
+ width: 32px;  }
+.frame-0 { background-position: 0 0; }
+.frame-1 { background-position: -64px 0; } 
+
